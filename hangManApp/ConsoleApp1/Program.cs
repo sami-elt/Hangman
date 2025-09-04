@@ -23,6 +23,8 @@ internal class Program
             displayString.Append('_');
 
         }
+
+
         int secret = secretWord.Length;
 
         while (lifeLeft > 0)
@@ -40,16 +42,17 @@ internal class Program
 
                 int i = 0;
 
-                bool found = false;
+                bool hit = false;
 
                 foreach (char letter in secretWord)
                 {
                     if (letter == guess[0])
                     {
-                        found = true;
+                        hit = true;
                         displayString[i] = letter;
-                        //Console.WriteLine("Rätt!");
                         secret--;
+
+                        Console.WriteLine("Rätt!");
                     }
 
                     i++;
@@ -63,13 +66,16 @@ internal class Program
                 }
 
 
-                if (!found)
+                if (!hit)
                 {
                     lifeLeft--;
                     Console.WriteLine("Fel!");
                 }
 
- 
+                if(lifeLeft == 0)
+                {
+                    Console.WriteLine("Du har förlorat");
+                }
 
             }
 
